@@ -203,8 +203,8 @@ export default function MerchantDataModelViewer() {
                       const color = isGood ? "#4ade80" : isWarn ? "#fbbf24" : "#f87171";
                       return (
                         <div key={k} style={{ background: "#080b10", borderRadius: 5, padding: "6px 8px" }}>
-                          <div style={{ fontSize: 7, color: "#374151", marginBottom: 2, fontFamily: "monospace" }}>{k}</div>
-                          <div style={{ fontSize: 9, fontWeight: 700, color, textTransform: "uppercase" }}>{v}</div>
+                          <div style={{ fontSize: 10, color: "#374151", marginBottom: 2, fontFamily: "monospace" }}>{k}</div>
+                          <div style={{ fontSize: 12, fontWeight: 700, color, textTransform: "uppercase" }}>{v}</div>
                         </div>
                       );
                     })}

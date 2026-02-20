@@ -43,9 +43,9 @@ export default function FailureRulesViewer() {
       <div style={{ background: "#080b10", borderBottom: "1px solid #1e2730", padding: "10px 20px" }}>
         <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 2 }}>
           ⚙️ Step 2 — <span style={{ color: "#00a651" }}>Failure Rules Engine</span>
-          <span style={{ fontSize: 10, color: "#374151", fontWeight: 400, marginLeft: 10 }}>failureRulesEngine.js</span>
+          <span style={{ fontSize: 14, color: "#ccc", fontWeight: 400, marginLeft: 10 }}>failureRulesEngine.js</span>
         </div>
-        <div style={{ fontSize: 9, color: "#374151" }}>
+        <div style={{ fontSize: 9, color: "#ccc" }}>
           12 rules ranked by call center demand · Evaluator · Pre-scanner · Batch scanner
         </div>
       </div>
@@ -56,11 +56,11 @@ export default function FailureRulesViewer() {
           <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
             background: "none", border: "none",
             borderBottom: activeTab === t.id ? "2px solid #00a651" : "2px solid transparent",
-            color: activeTab === t.id ? "#e2e8f0" : "#4b5563",
+            color: activeTab === t.id ? "#e2e8f0" : "white",
             padding: "8px 14px", cursor: "pointer", fontSize: 11, fontWeight: 600,
           }}>
             {t.label}
-            <span style={{ fontSize: 8, color: "#374151", marginLeft: 5 }}>{t.desc}</span>
+            <span style={{ fontSize: 10, color: "#ccc", marginLeft: 5 }}>{t.desc}</span>
           </button>
         ))}
       </div>
@@ -72,7 +72,7 @@ export default function FailureRulesViewer() {
           <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 14 }}>
             {/* Merchant selector */}
             <div>
-              <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>MERCHANT</div>
+              <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>MERCHANT</div>
               {merchants.map(m => (
                 <button key={m.id} onClick={() => { setSelected(m); setResult(null); }} style={{
                   width: "100%", background: selected.id === m.id ? "rgba(0,166,81,0.1)" : "rgba(255,255,255,0.02)",
@@ -89,14 +89,14 @@ export default function FailureRulesViewer() {
                 </button>
               ))}
               <button onClick={() => { const m = generateMerchant(); setMerchants(p => [...p, m]); setSelected(m); }} style={{
-                width: "100%", background: "#161b22", border: "1px solid #21262d", color: "#6b7280",
+                width: "100%", background: "#161b22", border: "1px solid #ffffff", color: "#6b7280",
                 borderRadius: 6, padding: "7px", fontSize: 9, cursor: "pointer", marginTop: 4,
               }}>+ Random Merchant</button>
             </div>
 
             {/* Action evaluator */}
             <div>
-              <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>EVALUATE ACTION</div>
+              <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>EVALUATE ACTION</div>
 
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 5, marginBottom: 10 }}>
                 {ALL_KEYS.map(key => {
@@ -109,7 +109,7 @@ export default function FailureRulesViewer() {
                       border: active ? "1px solid #00a651" : `1px solid ${!preCheck.success ? SEV[preCheck.severity]?.bd + "55" : "#1e2730"}`,
                       borderRadius: 6, padding: "7px 9px", cursor: "pointer", textAlign: "left",
                     }}>
-                      <div style={{ fontSize: 8, color: "#374151", marginBottom: 2 }}>#{meta.demand_rank}</div>
+                      <div style={{ fontSize: 10, color: "#ccc", marginBottom: 2 }}>#{meta.demand_rank}</div>
                       <div style={{ fontSize: 9, color: "#e2e8f0", fontWeight: 600, lineHeight: 1.3 }}>{meta.label}</div>
                       <div style={{ fontSize: 7, marginTop: 3 }}>
                         {!preCheck.success
@@ -124,11 +124,11 @@ export default function FailureRulesViewer() {
 
               <div style={{ display: "flex", gap: 8, marginBottom: 10 }}>
                 <div style={{ flex: 1, background: "#0d1117", border: "1px solid #1e2730", borderRadius: 6, padding: "8px 12px" }}>
-                  <div style={{ fontSize: 8, color: "#374151", marginBottom: 2 }}>SELECTED RULE</div>
+                  <div style={{ fontSize: 10, color: "#ccc", marginBottom: 2 }}>SELECTED RULE</div>
                   <div style={{ fontSize: 11, color: "#e2e8f0", fontWeight: 700 }}>#{RULE_METADATA[selectedAction].demand_rank} {RULE_METADATA[selectedAction].label}</div>
-                  <div style={{ fontSize: 8, color: "#4b5563", marginTop: 2 }}>{RULE_METADATA[selectedAction].menu_path}</div>
-                  <div style={{ fontSize: 8, color: "#4b5563" }}>{RULE_METADATA[selectedAction].ussd_path}</div>
-                  <div style={{ fontSize: 8, color: "#374151", marginTop: 3 }}>
+                  <div style={{ fontSize: 10, color: "white", marginTop: 2 }}>{RULE_METADATA[selectedAction].menu_path}</div>
+                  <div style={{ fontSize: 10, color: "white" }}>{RULE_METADATA[selectedAction].ussd_path}</div>
+                  <div style={{ fontSize: 10, color: "#ccc", marginTop: 3 }}>
                     {RULE_METADATA[selectedAction].demand_total.toLocaleString()} calls Oct–Dec 2025
                   </div>
                 </div>
@@ -149,26 +149,26 @@ export default function FailureRulesViewer() {
                     <span style={{ fontWeight: 800, fontSize: 13, color: result.success === true ? "#4ade80" : SEV[result.severity]?.badge }}>
                       {result.success === true ? "SUCCESS" : result.success === "warn" ? "WARNING" : "FAILED"}
                     </span>
-                    {result.code !== "OK" && <span style={{ fontSize: 10, fontFamily: "monospace", color: "#4b5563" }}>[{result.code}]</span>}
+                    {result.code !== "OK" && <span style={{ fontSize: 14, fontFamily: "monospace", color: "white" }}>[{result.code}]</span>}
                     {result.severity && (
                       <span style={{ fontSize: 9, background: SEV[result.severity]?.badge + "22", color: SEV[result.severity]?.badge, padding: "2px 7px", borderRadius: 4, fontWeight: 700 }}>
                         {SEV[result.severity]?.label}
                       </span>
                     )}
                   </div>
-                  <p style={{ fontSize: 12, color: "#e2e8f0", margin: "0 0 8px", lineHeight: 1.5 }}>{result.inline}</p>
+                  <p style={{ fontSize: 14, color: "#e2e8f0", margin: "0 0 8px", lineHeight: 1.5 }}>{result.inline}</p>
                   {!result.success && (
                     <>
                       <div style={{ background: "rgba(0,0,0,0.3)", borderRadius: 5, padding: "8px 10px", marginBottom: 6 }}>
-                        <div style={{ fontSize: 8, color: "#6b7280", fontWeight: 700, letterSpacing: 1, marginBottom: 3 }}>WHY THIS HAPPENED</div>
+                        <div style={{ fontSize: 10, color: "#6b7280", fontWeight: 700, letterSpacing: 1, marginBottom: 3 }}>WHY THIS HAPPENED</div>
                         <p style={{ fontSize: 11, color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>{result.reason}</p>
                       </div>
                       <div style={{ background: "rgba(234,179,8,0.06)", border: "1px solid rgba(234,179,8,0.18)", borderRadius: 5, padding: "8px 10px", marginBottom: 6 }}>
-                        <div style={{ fontSize: 8, color: "#eab308", fontWeight: 700, letterSpacing: 1, marginBottom: 3 }}>💡 HOW TO FIX</div>
+                        <div style={{ fontSize: 10, color: "#eab308", fontWeight: 700, letterSpacing: 1, marginBottom: 3 }}>💡 HOW TO FIX</div>
                         <p style={{ fontSize: 11, color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>{result.fix}</p>
                       </div>
                       <div style={{ background: "rgba(99,179,237,0.06)", border: "1px solid rgba(99,179,237,0.15)", borderRadius: 5, padding: "8px 10px" }}>
-                        <div style={{ fontSize: 8, color: "#7dd3fc", fontWeight: 700, letterSpacing: 1, marginBottom: 3 }}>ESCALATION</div>
+                        <div style={{ fontSize: 10, color: "#7dd3fc", fontWeight: 700, letterSpacing: 1, marginBottom: 3 }}>ESCALATION</div>
                         <p style={{ fontSize: 11, color: "#bae6fd", margin: 0 }}>{result.escalation}</p>
                       </div>
                     </>
@@ -183,7 +183,7 @@ export default function FailureRulesViewer() {
         {activeTab === "scanner" && (
           <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 14 }}>
             <div>
-              <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>MERCHANT</div>
+              <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>MERCHANT</div>
               {merchants.map(m => (
                 <button key={m.id} onClick={() => setSelected(m)} style={{
                   width: "100%", background: selected.id === m.id ? "rgba(0,166,81,0.1)" : "rgba(255,255,255,0.02)",
@@ -212,16 +212,16 @@ export default function FailureRulesViewer() {
                 ].map(k => (
                   <div key={k.label} style={{ background: "#0d1117", border: "1px solid #1e2730", borderRadius: 7, padding: "8px 10px", textAlign: "center" }}>
                     <div style={{ fontSize: 16, fontWeight: 800, color: k.c }}>{k.v}</div>
-                    <div style={{ fontSize: 8, color: "#4b5563" }}>{k.label}</div>
+                    <div style={{ fontSize: 10, color: "white" }}>{k.label}</div>
                   </div>
                 ))}
               </div>
 
-              <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>
+              <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>
                 ALL FAILURES DETECTED (sorted by severity × demand)
               </div>
               {allFailures.length === 0 && (
-                <div style={{ color: "#4ade80", fontSize: 12, textAlign: "center", padding: 30 }}>
+                <div style={{ color: "#4ade80", fontSize: 14, textAlign: "center", padding: 30 }}>
                   ✅ No failures detected for this merchant
                 </div>
               )}
@@ -231,16 +231,16 @@ export default function FailureRulesViewer() {
                   <div key={i} style={{ background: s.bg, border: `1px solid ${s.bd}44`, borderLeft: `3px solid ${s.bd}`, borderRadius: 6, padding: "9px 11px", marginBottom: 6 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
                       <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                        <span style={{ fontSize: 8, background: s.badge + "22", color: s.badge, padding: "1px 6px", borderRadius: 3, fontWeight: 700 }}>{s.icon} {s.label}</span>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: "#e2e8f0" }}>#{f.demand_rank} {f.actionLabel}</span>
+                        <span style={{ fontSize: 10, background: s.badge + "22", color: s.badge, padding: "1px 6px", borderRadius: 3, fontWeight: 700 }}>{s.icon} {s.label}</span>
+                        <span style={{ fontSize: 14, fontWeight: 700, color: "#e2e8f0" }}>#{f.demand_rank} {f.actionLabel}</span>
                       </div>
-                      <span style={{ fontSize: 8, fontFamily: "monospace", color: "#4b5563" }}>[{f.code}]</span>
+                      <span style={{ fontSize: 10, fontFamily: "monospace", color: "white" }}>[{f.code}]</span>
                     </div>
                     <div style={{ fontSize: 9, color: "#cbd5e1", marginBottom: 3, lineHeight: 1.4 }}>{f.inline}</div>
-                    <div style={{ fontSize: 8, color: "#6b7280" }}>
-                      <span style={{ color: "#374151" }}>Fix: </span>{f.fix}
+                    <div style={{ fontSize: 10, color: "#6b7280" }}>
+                      <span style={{ color: "#ccc" }}>Fix: </span>{f.fix}
                     </div>
-                    <div style={{ fontSize: 7, color: "#374151", marginTop: 3 }}>
+                    <div style={{ fontSize: 7, color: "#ccc", marginTop: 3 }}>
                       {f.demand_total?.toLocaleString()} calls (Oct–Dec) · {f.ussd_path} · {f.menu_path}
                     </div>
                   </div>
@@ -259,15 +259,15 @@ export default function FailureRulesViewer() {
                 <div key={key} style={{ background: "#0d1117", border: "1px solid #1e2730", borderRadius: 8, padding: 12 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
                     <div>
-                      <div style={{ fontSize: 8, color: "#374151", marginBottom: 2 }}>Demand Rank #{meta.demand_rank}</div>
+                      <div style={{ fontSize: 10, color: "#ccc", marginBottom: 2 }}>Demand Rank #{meta.demand_rank}</div>
                       <div style={{ fontSize: 11, fontWeight: 700, color: "#e2e8f0" }}>{meta.label}</div>
                     </div>
                     <div style={{ textAlign: "right" }}>
                       <div style={{ fontSize: 13, fontWeight: 800, color: "#00a651" }}>{meta.demand_total.toLocaleString()}</div>
-                      <div style={{ fontSize: 7, color: "#374151" }}>calls Oct–Dec</div>
+                      <div style={{ fontSize: 7, color: "#ccc" }}>calls Oct–Dec</div>
                     </div>
                   </div>
-                  <div style={{ fontSize: 8, color: "#6b7280", lineHeight: 1.5, marginBottom: 6 }}>{meta.description}</div>
+                  <div style={{ fontSize: 10, color: "#6b7280", lineHeight: 1.5, marginBottom: 6 }}>{meta.description}</div>
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
                     <span style={{ fontSize: 7, background: "#161b22", color: "#6b7280", padding: "2px 6px", borderRadius: 3, fontFamily: "monospace" }}>{meta.ussd_path}</span>
                     <span style={{ fontSize: 7, background: "#161b22", color: "#6b7280", padding: "2px 6px", borderRadius: 3 }}>{meta.menu_path}</span>
@@ -292,27 +292,27 @@ export default function FailureRulesViewer() {
               ].map(k => (
                 <div key={k.label} style={{ background: "#0d1117", border: `1px solid ${k.c}22`, borderRadius: 7, padding: "10px", textAlign: "center" }}>
                   <div style={{ fontSize: 18, fontWeight: 800, color: k.c }}>{k.v}</div>
-                  <div style={{ fontSize: 8, color: "#4b5563" }}>{k.label}</div>
+                  <div style={{ fontSize: 10, color: "white" }}>{k.label}</div>
                 </div>
               ))}
             </div>
 
             {/* Top failures */}
             <div style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>TOP FAILURE CODES ACROSS FLEET</div>
+              <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>TOP FAILURE CODES ACROSS FLEET</div>
               <div style={{ display: "flex", gap: 6 }}>
                 {batchResult.fleet.topFailures.map(f => (
                   <div key={f.code} style={{ background: "#0d1117", border: "1px solid #ef444433", borderRadius: 7, padding: "8px 12px", textAlign: "center" }}>
                     <div style={{ fontSize: 14, fontWeight: 800, color: "#ef4444" }}>{f.count}</div>
-                    <div style={{ fontSize: 8, color: "#f87171", fontFamily: "monospace" }}>{f.code}</div>
-                    <div style={{ fontSize: 7, color: "#374151" }}>{f.pct}% of fleet</div>
+                    <div style={{ fontSize: 10, color: "#f87171", fontFamily: "monospace" }}>{f.code}</div>
+                    <div style={{ fontSize: 7, color: "#ccc" }}>{f.pct}% of fleet</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Per-merchant results */}
-            <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>PER-MERCHANT BREAKDOWN</div>
+            <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>PER-MERCHANT BREAKDOWN</div>
             <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
               {batchResult.merchantResults.map(({ merchant, summary, failures }) => {
                 const tier = getRiskTier(merchant);
@@ -323,14 +323,14 @@ export default function FailureRulesViewer() {
                       <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                         <span style={{ fontSize: 16 }}>{merchant.avatar}</span>
                         <div>
-                          <div style={{ fontSize: 10, fontWeight: 700 }}>{merchant.business_name}</div>
-                          <div style={{ fontSize: 8, color: "#4b5563" }}>PB {merchant.paybill} · {formatKES(merchant.balance)}</div>
+                          <div style={{ fontSize: 14, fontWeight: 700 }}>{merchant.business_name}</div>
+                          <div style={{ fontSize: 10, color: "white" }}>PB {merchant.paybill} · {formatKES(merchant.balance)}</div>
                         </div>
                       </div>
                       <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                         <span style={{ fontSize: 9, fontWeight: 700, color: ts.color }}>{ts.label}</span>
-                        <span style={{ fontSize: 8, color: "#4b5563" }}>{summary.passing}/{summary.total} pass</span>
-                        <span style={{ fontSize: 8, color: "#eab308" }}>{summary.callsAtRisk.toLocaleString()} calls at risk</span>
+                        <span style={{ fontSize: 10, color: "white" }}>{summary.passing}/{summary.total} pass</span>
+                        <span style={{ fontSize: 10, color: "#eab308" }}>{summary.callsAtRisk.toLocaleString()} calls at risk</span>
                       </div>
                     </div>
                     <div style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
@@ -342,7 +342,7 @@ export default function FailureRulesViewer() {
                           </span>
                         );
                       })}
-                      {failures.length > 5 && <span style={{ fontSize: 7, color: "#374151" }}>+{failures.length - 5} more</span>}
+                      {failures.length > 5 && <span style={{ fontSize: 7, color: "#ccc" }}>+{failures.length - 5} more</span>}
                       {failures.length === 0 && <span style={{ fontSize: 7, color: "#4ade80" }}>✓ All passing</span>}
                     </div>
                   </div>

@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 // ── Four steps of the Merchant Digital Twin
-import MerchantDataModelViewer from './merchantdatamodelviewer.jsx';   // Step 1 UI
-import FailureRulesViewer from './failurerulesviewer';             // Step 2 UI
-import MerchantSimulator from './merchant-simulator';           // Step 3
-import TwinDashboard from './twinDashboard';                       // Step 4
+import MerchantDataModelViewer from './merchantDataModelViewer';   // Step 1 UI
+import FailureRulesViewer from './failureRulesViewer';             // Step 2 UI
+import MerchantSimulator from './merchantSimulator';           // Step 3
+import TwinDashboard from './twinDashboard';
+import TwinDashboardV2 from './twinDashboardV2';                           // Step 4
 
 const STEPS = [
   {
@@ -30,7 +31,7 @@ const STEPS = [
     id: 3,
     label: "Simulator",
     icon: "📱",
-    file: "merchant-simulator-v2.jsx",
+    file: "merchantSimulator.jsx",
     desc: "M-PESA App · USSD *234# · Web Portal",
     tag: "STEP 3",
     component: MerchantSimulator,
@@ -43,6 +44,15 @@ const STEPS = [
     desc: "Mirror · Analyze · Update · Summarize · Fleet · Alerts",
     tag: "STEP 4",
     component: TwinDashboard,
+  },
+  {
+    id: 5,
+    label: "Twin Dashboard With AI",
+    icon: "🔁",
+    file: "twinDashboard.jsx",
+    desc: "Mirror · Analyze · Update · Summarize · Fleet · Alerts",
+    tag: "STEP 5",
+    component: TwinDashboardV2,
   },
 ];
 
@@ -66,8 +76,8 @@ function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 10, paddingRight: 20, borderRight: "1px solid #1e2730", marginRight: 8 }}>
           <div style={{ background: "linear-gradient(135deg, #00a651, #005520)", borderRadius: 7, padding: "5px 8px", fontSize: 14 }}>📡</div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: 12, color: "#e2e8f0", letterSpacing: -0.3 }}>Merchant Digital Twin</div>
-            <div style={{ fontSize: 8, color: "#374151" }}>Safaricom LNM · 4-Step Architecture</div>
+            <div style={{ fontWeight: 800, fontSize: 14, color: "#e2e8f0", letterSpacing: -0.3 }}>Merchant Digital Twin</div>
+            <div style={{ fontSize: 10, color: "#374151" }}>Safaricom LNM · 4-Step Architecture</div>
           </div>
         </div>
 
@@ -98,14 +108,14 @@ function App() {
             >
               <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                 <span style={{
-                  fontSize: 8, fontWeight: 700, letterSpacing: 0.5,
+                  fontSize: 10, fontWeight: 700, letterSpacing: 0.5,
                   color: active ? "#00a651" : "#374151",
                   background: active ? "rgba(0,166,81,0.15)" : "#161b22",
                   padding: "1px 5px", borderRadius: 3,
                 }}>{step.tag}</span>
                 <span style={{ fontSize: 11, fontWeight: 700 }}>{step.icon} {step.label}</span>
               </div>
-              <div style={{ fontSize: 8, color: active ? "#6b7280" : "#374151", lineHeight: 1.3 }}>{step.desc}</div>
+              <div style={{ fontSize: 10, color: active ? "#6b7280" : "#374151", lineHeight: 1.3 }}>{step.desc}</div>
             </button>
           );
         })}
@@ -114,10 +124,10 @@ function App() {
         <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 6, paddingLeft: 16 }}>
           {STEPS.map((s, i) => (
             <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 4 }}>
-              {i > 0 && <span style={{ color: "#1e2730", fontSize: 12 }}>→</span>}
+              {i > 0 && <span style={{ color: "#1e2730", fontSize: 14 }}>→</span>}
               <button onClick={() => setActiveStep(s.id)} style={{
                 background: "none", border: "none", cursor: "pointer",
-                fontSize: 8, color: activeStep === s.id ? "#00a651" : "#374151",
+                fontSize: 10, color: activeStep === s.id ? "#00a651" : "#374151",
                 fontWeight: activeStep === s.id ? 700 : 400,
                 padding: "2px 4px",
               }}>

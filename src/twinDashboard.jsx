@@ -160,7 +160,7 @@ function TwinLoopVisualiser({ loopState, lastEvent }) {
 
   return (
     <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 10, padding: 14 }}>
-      <div style={{ fontSize: 10, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 12 }}>
+      <div style={{ fontSize: 14, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 12 }}>
         ⚙️ TWIN LOOP — CONTINUOUS CYCLE
       </div>
 
@@ -178,11 +178,11 @@ function TwinLoopVisualiser({ loopState, lastEvent }) {
                 transition: "all 0.3s",
               }}>
                 <div style={{ fontSize: 18, marginBottom: 4 }}>{step.icon}</div>
-                <div style={{ fontSize: 9, fontWeight: 700, color: active ? "white" : "#4b5563" }}>{step.label}</div>
-                <div style={{ fontSize: 7, color: active ? "rgba(255,255,255,0.7)" : "#374151", marginTop: 2, lineHeight: 1.3 }}>{step.desc}</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: active ? "white" : "white" }}>{step.label}</div>
+                <div style={{ fontSize: 10, color: active ? "rgba(255,255,255,0.7)" : "white", marginTop: 2, lineHeight: 1.3 }}>{step.desc}</div>
               </div>
               {i < steps.length - 1 && (
-                <div style={{ color: active ? "#00a651" : "#21262d", fontSize: 14, transition: "color 0.3s" }}>→</div>
+                <div style={{ color: active ? "#00a651" : "#ffffff", fontSize: 14, transition: "color 0.3s" }}>→</div>
               )}
             </div>
           );
@@ -192,39 +192,39 @@ function TwinLoopVisualiser({ loopState, lastEvent }) {
       {/* Last event trace */}
       {lastEvent && (
         <div style={{ background: "#080b10", borderRadius: 7, padding: "8px 10px", border: "1px solid #1e2730" }}>
-          <div style={{ fontSize: 8, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 5 }}>LAST REASONING TRACE</div>
+          <div style={{ fontSize: 10, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 5 }}>LAST REASONING TRACE</div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
             <div>
-              <div style={{ fontSize: 8, color: "#374151", marginBottom: 2 }}>MERCHANT</div>
-              <div style={{ fontSize: 10, color: "#e2e8f0", fontWeight: 600 }}>{lastEvent.merchantName}</div>
-              <div style={{ fontSize: 8, color: "#4b5563" }}>{lastEvent.phone}</div>
+              <div style={{ fontSize: 10, color: "#374151", marginBottom: 2 }}>MERCHANT</div>
+              <div style={{ fontSize: 14, color: "#e2e8f0", fontWeight: 600 }}>{lastEvent.merchantName}</div>
+              <div style={{ fontSize: 10, color: "white" }}>{lastEvent.phone}</div>
             </div>
             <div>
-              <div style={{ fontSize: 8, color: "#374151", marginBottom: 2 }}>ACTION EVALUATED</div>
-              <div style={{ fontSize: 10, color: "#e2e8f0", fontWeight: 600 }}>{lastEvent.actionLabel}</div>
-              <div style={{ fontSize: 8, color: "#4b5563" }}>{lastEvent.ussdPath}</div>
+              <div style={{ fontSize: 10, color: "#374151", marginBottom: 2 }}>ACTION EVALUATED</div>
+              <div style={{ fontSize: 14, color: "#e2e8f0", fontWeight: 600 }}>{lastEvent.actionLabel}</div>
+              <div style={{ fontSize: 10, color: "white" }}>{lastEvent.ussdPath}</div>
             </div>
             <div>
-              <div style={{ fontSize: 8, color: "#374151", marginBottom: 2 }}>RESULT</div>
+              <div style={{ fontSize: 10, color: "#374151", marginBottom: 2 }}>RESULT</div>
               <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-                <span style={{ fontSize: 12 }}>{lastEvent.success ? "✅" : "❌"}</span>
+                <span style={{ fontSize: 14 }}>{lastEvent.success ? "✅" : "❌"}</span>
                 <span style={{ fontSize: 9, fontWeight: 700, color: lastEvent.success ? "#4ade80" : SEV[lastEvent.severity]?.badge }}>
                   {lastEvent.success ? "PASS" : lastEvent.code}
                 </span>
                 {lastEvent.severity && (
-                  <span style={{ fontSize: 8, background: SEV[lastEvent.severity]?.badge + "22", color: SEV[lastEvent.severity]?.badge, padding: "1px 5px", borderRadius: 3, fontWeight: 700 }}>
+                  <span style={{ fontSize: 10, background: SEV[lastEvent.severity]?.badge + "22", color: SEV[lastEvent.severity]?.badge, padding: "1px 5px", borderRadius: 3, fontWeight: 700 }}>
                     {SEV[lastEvent.severity]?.label}
                   </span>
                 )}
               </div>
             </div>
             <div>
-              <div style={{ fontSize: 8, color: "#374151", marginBottom: 2 }}>TIMESTAMP</div>
-              <div style={{ fontSize: 10, color: "#e2e8f0", fontFamily: "monospace" }}>{lastEvent.timestamp}</div>
+              <div style={{ fontSize: 10, color: "#374151", marginBottom: 2 }}>TIMESTAMP</div>
+              <div style={{ fontSize: 14, color: "#e2e8f0", fontFamily: "monospace" }}>{lastEvent.timestamp}</div>
             </div>
           </div>
           {!lastEvent.success && lastEvent.reason && (
-            <div style={{ marginTop: 6, fontSize: 8, color: "#6b7280", borderTop: "1px solid #1e2730", paddingTop: 5, lineHeight: 1.5 }}>
+            <div style={{ marginTop: 6, fontSize: 10, color: "#6b7280", borderTop: "1px solid #1e2730", paddingTop: 5, lineHeight: 1.5 }}>
               <span style={{ color: "#374151" }}>Root cause: </span>{lastEvent.reason}
             </div>
           )}
@@ -243,7 +243,7 @@ function FleetOverview({ merchants, onSelectMerchant, selectedId }) {
 
   return (
     <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 10, padding: 14 }}>
-      <div style={{ fontSize: 10, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
+      <div style={{ fontSize: 14, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
         🏪 FLEET OVERVIEW — {merchants.length} MERCHANTS
       </div>
 
@@ -257,7 +257,7 @@ function FleetOverview({ merchants, onSelectMerchant, selectedId }) {
         ].map(kpi => (
           <div key={kpi.label} style={{ background: kpi.bg, border: `1px solid ${kpi.color}22`, borderRadius: 7, padding: "8px 10px", textAlign: "center" }}>
             <div style={{ fontSize: 16, fontWeight: 800, color: kpi.color }}>{kpi.value}</div>
-            <div style={{ fontSize: 8, color: "#4b5563", marginTop: 2 }}>{kpi.label}</div>
+            <div style={{ fontSize: 10, color: "white", marginTop: 2 }}>{kpi.label}</div>
           </div>
         ))}
       </div>
@@ -283,19 +283,19 @@ function FleetOverview({ merchants, onSelectMerchant, selectedId }) {
                 <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                   <span style={{ fontSize: 15 }}>{merchant.avatar}</span>
                   <div>
-                    <div style={{ color: "#e2e8f0", fontSize: 10, fontWeight: 600 }}>{merchant.business_name}</div>
-                    <div style={{ color: "#4b5563", fontSize: 8 }}>PB {merchant.paybill} · {merchant.phone_number}</div>
+                    <div style={{ color: "#e2e8f0", fontSize: 14, fontWeight: 600 }}>{merchant.business_name}</div>
+                    <div style={{ color: "white", fontSize: 10 }}>PB {merchant.paybill} · {merchant.phone_number}</div>
                   </div>
                 </div>
                 <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                   {summary.bySeverity.critical > 0 && (
-                    <span style={{ fontSize: 8, background: "#ef444422", color: "#ef4444", padding: "1px 5px", borderRadius: 3, fontWeight: 700 }}>🔴 {summary.bySeverity.critical}</span>
+                    <span style={{ fontSize: 10, background: "#ef444422", color: "#ef4444", padding: "1px 5px", borderRadius: 3, fontWeight: 700 }}>🔴 {summary.bySeverity.critical}</span>
                   )}
                   {summary.bySeverity.high > 0 && (
-                    <span style={{ fontSize: 8, background: "#f9731622", color: "#f97316", padding: "1px 5px", borderRadius: 3, fontWeight: 700 }}>🟠 {summary.bySeverity.high}</span>
+                    <span style={{ fontSize: 10, background: "#f9731622", color: "#f97316", padding: "1px 5px", borderRadius: 3, fontWeight: 700 }}>🟠 {summary.bySeverity.high}</span>
                   )}
-                  <span style={{ fontSize: 8, fontWeight: 700, color: ts.color }}>{tier}</span>
-                  <span style={{ fontSize: 8, color: "#4b5563" }}>{summary.passing}/{summary.total} ✓</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: ts.color }}>{tier}</span>
+                  <span style={{ fontSize: 10, color: "white" }}>{summary.passing}/{summary.total} ✓</span>
                 </div>
               </div>
               {/* Health bar */}
@@ -323,7 +323,7 @@ function AlertFeed({ alerts, onSelectMerchant }) {
   return (
     <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 10, padding: 14, display: "flex", flexDirection: "column" }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-        <div style={{ fontSize: 10, color: "#4b5563", fontWeight: 700, letterSpacing: 1 }}>
+        <div style={{ fontSize: 14, color: "white", fontWeight: 700, letterSpacing: 1 }}>
           🚨 PRE-FAILURE ALERT FEED — {alerts.length} DETECTED
         </div>
         <div style={{ display: "flex", gap: 4 }}>
@@ -331,8 +331,8 @@ function AlertFeed({ alerts, onSelectMerchant }) {
             <button key={f} onClick={() => setFilter(f)} style={{
               background: filter === f ? (f === "all" ? "#161b22" : SEV[f]?.badge + "22") : "transparent",
               border: `1px solid ${filter === f ? (f === "all" ? "#21262d" : SEV[f]?.badge) : "#21262d"}`,
-              color: filter === f ? (f === "all" ? "#e2e8f0" : SEV[f]?.badge) : "#4b5563",
-              borderRadius: 4, padding: "2px 7px", fontSize: 8, cursor: "pointer", fontWeight: 600,
+              color: filter === f ? (f === "all" ? "#e2e8f0" : SEV[f]?.badge) : "white",
+              borderRadius: 4, padding: "2px 7px", fontSize: 10, cursor: "pointer", fontWeight: 600,
             }}>{f.toUpperCase()}</button>
           ))}
         </div>
@@ -354,13 +354,13 @@ function AlertFeed({ alerts, onSelectMerchant }) {
                 <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
                   <span style={{ fontSize: 13 }}>{alert.merchant.avatar}</span>
                   <div>
-                    <div style={{ color: "#e2e8f0", fontSize: 10, fontWeight: 600 }}>{alert.merchant.business_name}</div>
-                    <div style={{ color: "#4b5563", fontSize: 8 }}>PB {alert.merchant.paybill}</div>
+                    <div style={{ color: "#e2e8f0", fontSize: 14, fontWeight: 600 }}>{alert.merchant.business_name}</div>
+                    <div style={{ color: "white", fontSize: 10 }}>PB {alert.merchant.paybill}</div>
                   </div>
                 </div>
                 <div style={{ textAlign: "right" }}>
-                  <span style={{ fontSize: 8, background: s.badge + "22", color: s.badge, padding: "1px 6px", borderRadius: 3, fontWeight: 700 }}>{s.icon} {s.label}</span>
-                  <div style={{ fontSize: 7, color: "#4b5563", fontFamily: "monospace", marginTop: 2 }}>[{alert.code}]</div>
+                  <span style={{ fontSize: 10, background: s.badge + "22", color: s.badge, padding: "1px 6px", borderRadius: 3, fontWeight: 700 }}>{s.icon} {s.label}</span>
+                  <div style={{ fontSize: 7, color: "white", fontFamily: "monospace", marginTop: 2 }}>[{alert.code}]</div>
                 </div>
               </div>
               <div style={{ fontSize: 9, color: "#94a3b8", marginBottom: 3 }}>
@@ -371,7 +371,7 @@ function AlertFeed({ alerts, onSelectMerchant }) {
                 <span style={{ fontSize: 7, color: "#374151" }}>💡 {alert.fix?.slice(0, 60)}...</span>
               </div>
               {(alert.severity === "critical" || alert.severity === "high") && (
-                <div style={{ marginTop: 5, fontSize: 8, color: "#7dd3fc", background: "rgba(99,179,237,0.06)", borderRadius: 4, padding: "3px 7px" }}>
+                <div style={{ marginTop: 5, fontSize: 10, color: "#7dd3fc", background: "rgba(99,179,237,0.06)", borderRadius: 4, padding: "3px 7px" }}>
                   🎯 ESCALATION: {alert.escalation}
                 </div>
               )}
@@ -392,7 +392,7 @@ function ActivityLog({ events, onSelectMerchant }) {
 
   return (
     <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 10, padding: 14, display: "flex", flexDirection: "column" }}>
-      <div style={{ fontSize: 10, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
+      <div style={{ fontSize: 14, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
         📋 REAL-TIME ACTIVITY LOG — {events.length} EVENTS
       </div>
 
@@ -414,17 +414,17 @@ function ActivityLog({ events, onSelectMerchant }) {
               }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-                  <span style={{ fontSize: 10 }}>{ev.success ? "✅" : ev.success === "warn" ? "⚠️" : "❌"}</span>
+                  <span style={{ fontSize: 14 }}>{ev.success ? "✅" : ev.success === "warn" ? "⚠️" : "❌"}</span>
                   <span style={{ fontSize: 9, fontWeight: 600, color: s ? s.badge : "#4ade80" }}>
                     {ev.merchant.business_name}
                   </span>
-                  <span style={{ fontSize: 8, color: "#4b5563" }}>·</span>
-                  <span style={{ fontSize: 8, color: "#6b7280" }}>{ev.actionLabel}</span>
+                  <span style={{ fontSize: 10, color: "white" }}>·</span>
+                  <span style={{ fontSize: 10, color: "#6b7280" }}>{ev.actionLabel}</span>
                 </div>
-                <span style={{ fontSize: 8, color: "#374151", fontFamily: "monospace" }}>{ev.timestamp}</span>
+                <span style={{ fontSize: 10, color: "#374151", fontFamily: "monospace" }}>{ev.timestamp}</span>
               </div>
               {!ev.success && ev.code && (
-                <div style={{ fontSize: 7, color: "#4b5563", fontFamily: "monospace", marginTop: 1 }}>
+                <div style={{ fontSize: 7, color: "white", fontFamily: "monospace", marginTop: 1 }}>
                   [{ev.code}] {s && <span style={{ color: s.badge }}>{s.label}</span>}
                   {ev.escalated && <span style={{ marginLeft: 6, color: "#7dd3fc" }}>🎯 ESCALATED</span>}
                 </div>
@@ -467,10 +467,10 @@ function DemandHeatmap({ merchants }) {
 
   return (
     <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 10, padding: 14 }}>
-      <div style={{ fontSize: 10, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>
+      <div style={{ fontSize: 14, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>
         📊 DEMAND × FAILURE RATE HEATMAP
       </div>
-      <div style={{ fontSize: 8, color: "#374151", marginBottom: 10 }}>
+      <div style={{ fontSize: 10, color: "#374151", marginBottom: 10 }}>
         Risk Score = (Call center demand / max demand) × Predicted failure rate across fleet · Darker = higher risk
       </div>
 
@@ -481,13 +481,13 @@ function DemandHeatmap({ merchants }) {
           return (
             <div key={month} style={{ flex: 1, background: "#161b22", borderRadius: 6, padding: "6px 8px", textAlign: "center" }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: "#00a651" }}>{total.toLocaleString()}</div>
-              <div style={{ fontSize: 8, color: "#4b5563" }}>{month}</div>
+              <div style={{ fontSize: 10, color: "white" }}>{month}</div>
             </div>
           );
         })}
         <div style={{ flex: 1, background: "#161b22", borderRadius: 6, padding: "6px 8px", textAlign: "center" }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#eab308" }}>{Object.values(totals).reduce((a, b) => a + b, 0).toLocaleString()}</div>
-          <div style={{ fontSize: 8, color: "#4b5563" }}>Total Q4</div>
+          <div style={{ fontSize: 10, color: "white" }}>Total Q4</div>
         </div>
       </div>
 
@@ -508,10 +508,10 @@ function DemandHeatmap({ merchants }) {
               <div style={{ background: "#161b22", borderRadius: 3, height: 14, overflow: "hidden" }}>
                 <div style={{ height: "100%", background: cellColor, width: `${intensity * 100}%`, borderRadius: 3, transition: "width 0.5s" }} />
               </div>
-              <div style={{ fontSize: 8, color: "#6b7280", textAlign: "right", fontFamily: "monospace" }}>
+              <div style={{ fontSize: 10, color: "#6b7280", textAlign: "right", fontFamily: "monospace" }}>
                 {row.demand.toLocaleString()}
               </div>
-              <div style={{ fontSize: 8, textAlign: "right", fontFamily: "monospace", color: row.failRate > 60 ? "#ef4444" : row.failRate > 30 ? "#f97316" : "#4b5563" }}>
+              <div style={{ fontSize: 10, textAlign: "right", fontFamily: "monospace", color: row.failRate > 60 ? "#ef4444" : row.failRate > 30 ? "#f97316" : "white" }}>
                 {row.failRate.toFixed(0)}% fail
               </div>
               <div style={{ background: cellColor, borderRadius: 4, padding: "2px 5px", textAlign: "center" }}>
@@ -539,7 +539,7 @@ function MerchantDeepDive({ merchant, lastTwinOutput }) {
 
   return (
     <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 10, padding: 14 }}>
-      <div style={{ fontSize: 10, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
+      <div style={{ fontSize: 14, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
         🔬 MERCHANT DEEP-DIVE
       </div>
 
@@ -548,21 +548,21 @@ function MerchantDeepDive({ merchant, lastTwinOutput }) {
         <div style={{ fontSize: 28 }}>{merchant.avatar}</div>
         <div style={{ flex: 1 }}>
           <div style={{ fontWeight: 700, fontSize: 13 }}>{merchant.business_name}</div>
-          <div style={{ fontSize: 9, color: "#4b5563" }}>{merchant.first_name} {merchant.last_name} · PB {merchant.paybill} · {merchant.phone_number}</div>
-          <div style={{ fontSize: 9, color: "#4b5563" }}>{merchant.bank} · {merchant.county}</div>
+          <div style={{ fontSize: 9, color: "white" }}>{merchant.first_name} {merchant.last_name} · PB {merchant.paybill} · {merchant.phone_number}</div>
+          <div style={{ fontSize: 9, color: "white" }}>{merchant.bank} · {merchant.county}</div>
         </div>
         <div style={{ textAlign: "right" }}>
           <div style={{ fontSize: 16, fontWeight: 800, color: "#e2e8f0" }}>{formatKES(merchant.balance)}</div>
           <div style={{ fontSize: 9, color: ts.color, fontWeight: 700, marginBottom: 3 }}>{ts.label}</div>
-          <div style={{ fontSize: 8, color: "#4b5563" }}>{summary.passing}/{summary.total} actions pass</div>
+          <div style={{ fontSize: 10, color: "white" }}>{summary.passing}/{summary.total} actions pass</div>
         </div>
       </div>
 
       {/* Health score */}
       <div style={{ background: "#080b10", borderRadius: 7, padding: "8px 10px", marginBottom: 10 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-          <span style={{ fontSize: 9, color: "#4b5563" }}>Sensor Health Score</span>
-          <span style={{ fontSize: 10, fontWeight: 700, color: score > 0.7 ? "#4ade80" : score > 0.4 ? "#fbbf24" : "#f87171" }}>
+          <span style={{ fontSize: 12, color: "white" }}>Sensor Health Score</span>
+          <span style={{ fontSize: 12, fontWeight: 700, color: score > 0.7 ? "#4ade80" : score > 0.4 ? "#fbbf24" : "#f87171" }}>
             {Math.round(score * 100)}%
           </span>
         </div>
@@ -579,7 +579,7 @@ function MerchantDeepDive({ merchant, lastTwinOutput }) {
       </div>
 
       {/* All 12 rule results */}
-      <div style={{ fontSize: 9, color: "#374151", fontWeight: 700, letterSpacing: 0.5, marginBottom: 6 }}>
+      <div style={{ fontSize: 12, color: "#374151", fontWeight: 700, letterSpacing: 0.5, marginBottom: 6 }}>
         ALL 12 RULE EVALUATIONS
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 3, maxHeight: 280, overflowY: "auto" }}>
@@ -595,7 +595,7 @@ function MerchantDeepDive({ merchant, lastTwinOutput }) {
             }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-                  <span style={{ fontSize: 10 }}>{result.success === true ? "✅" : result.success === "warn" ? "⚠️" : "❌"}</span>
+                  <span style={{ fontSize: 14 }}>{result.success === true ? "✅" : result.success === "warn" ? "⚠️" : "❌"}</span>
                   <span style={{ fontSize: 9, color: !result.success ? s.badge : "#4ade80", fontWeight: 600 }}>
                     #{meta.demand_rank} {meta.label}
                   </span>
@@ -610,7 +610,7 @@ function MerchantDeepDive({ merchant, lastTwinOutput }) {
                 </div>
               </div>
               {!result.success && (
-                <div style={{ fontSize: 8, color: "#6b7280", marginTop: 3, lineHeight: 1.4 }}>{result.inline}</div>
+                <div style={{ fontSize: 10, color: "#6b7280", marginTop: 3, lineHeight: 1.4 }}>{result.inline}</div>
               )}
             </div>
           );
@@ -626,7 +626,7 @@ function MerchantDeepDive({ merchant, lastTwinOutput }) {
 
           {/* Intervention */}
           <div style={{ background: "rgba(234,179,8,0.05)", border: "1px solid rgba(234,179,8,0.15)", borderRadius: 6, padding: "8px 10px", marginBottom: 6 }}>
-            <div style={{ fontSize: 8, color: "#eab308", fontWeight: 700, letterSpacing: 1, marginBottom: 5 }}>INTERVENTION RECOMMENDATIONS</div>
+            <div style={{ fontSize: 10, color: "#eab308", fontWeight: 700, letterSpacing: 1, marginBottom: 5 }}>INTERVENTION RECOMMENDATIONS</div>
             {lastTwinOutput.intervention.map((rec, i) => (
               <div key={i} style={{ fontSize: 9, color: "#cbd5e1", marginBottom: 3, lineHeight: 1.4 }}>• {rec}</div>
             ))}
@@ -634,23 +634,23 @@ function MerchantDeepDive({ merchant, lastTwinOutput }) {
 
           {/* Diagnostic */}
           <div style={{ background: "rgba(0,0,0,0.3)", borderRadius: 6, padding: "8px 10px", marginBottom: 6 }}>
-            <div style={{ fontSize: 8, color: "#6b7280", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>DIAGNOSTIC REPLAY</div>
+            <div style={{ fontSize: 10, color: "#6b7280", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>DIAGNOSTIC REPLAY</div>
             <div style={{ fontSize: 9, color: "#94a3b8", lineHeight: 1.4, marginBottom: 3 }}>
-              <span style={{ color: "#4b5563" }}>Root cause: </span>{lastTwinOutput.diagnostic.root_cause}
+              <span style={{ color: "white" }}>Root cause: </span>{lastTwinOutput.diagnostic.root_cause}
             </div>
             <div style={{ fontSize: 9, color: "#94a3b8", lineHeight: 1.4, marginBottom: 3 }}>
-              <span style={{ color: "#4b5563" }}>Sensors affected: </span>
+              <span style={{ color: "white" }}>Sensors affected: </span>
               {lastTwinOutput.diagnostic.contributing_sensors.join(", ") || "None"}
             </div>
             <div style={{ fontSize: 9, color: "#7dd3fc", lineHeight: 1.4 }}>
-              <span style={{ color: "#4b5563" }}>Demand context: </span>{lastTwinOutput.diagnostic.demand_context}
+              <span style={{ color: "white" }}>Demand context: </span>{lastTwinOutput.diagnostic.demand_context}
             </div>
           </div>
 
           {/* Escalation */}
           {lastTwinOutput.escalation && (
             <div style={{ background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.25)", borderRadius: 6, padding: "8px 10px" }}>
-              <div style={{ fontSize: 8, color: "#ef4444", fontWeight: 700, letterSpacing: 1, marginBottom: 3 }}>🎯 ESCALATION TRIGGERED</div>
+              <div style={{ fontSize: 10, color: "#ef4444", fontWeight: 700, letterSpacing: 1, marginBottom: 3 }}>🎯 ESCALATION TRIGGERED</div>
               <div style={{ fontSize: 9, color: "#fca5a5" }}>{lastTwinOutput.escalation_channel}</div>
             </div>
           )}
@@ -669,18 +669,18 @@ function ManualTrigger({ merchants, onFire }) {
 
   return (
     <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 10, padding: 14 }}>
-      <div style={{ fontSize: 10, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
+      <div style={{ fontSize: 14, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 10 }}>
         🎮 MANUAL TRIGGER
       </div>
       <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
         <select value={selMerchant} onChange={e => setSelMerchant(e.target.value)}
-          style={{ flex: 2, background: "#161b22", border: "1px solid #21262d", color: "#e2e8f0", borderRadius: 6, padding: "7px 10px", fontSize: 10, outline: "none" }}>
+          style={{ flex: 2, background: "#161b22", border: "1px solid #21262d", color: "#e2e8f0", borderRadius: 6, padding: "7px 10px", fontSize: 14, outline: "none" }}>
           {merchants.map(m => (
             <option key={m.id} value={m.id}>{m.business_name} ({m.paybill})</option>
           ))}
         </select>
         <select value={selAction} onChange={e => setSelAction(e.target.value)}
-          style={{ flex: 2, background: "#161b22", border: "1px solid #21262d", color: "#e2e8f0", borderRadius: 6, padding: "7px 10px", fontSize: 10, outline: "none" }}>
+          style={{ flex: 2, background: "#161b22", border: "1px solid #21262d", color: "#e2e8f0", borderRadius: 6, padding: "7px 10px", fontSize: 14, outline: "none" }}>
           {ALL_ACTION_KEYS.map(key => (
             <option key={key} value={key}>#{RULE_METADATA[key].demand_rank} {RULE_METADATA[key].label}</option>
           ))}
@@ -809,7 +809,7 @@ export default function TwinDashboard() {
               <span style={{ color: "#374151", fontWeight: 400 }}> · </span>
               <span style={{ color: "#00a651" }}>Step 4: Twin Loop Dashboard</span>
             </div>
-            <div style={{ fontSize: 9, color: "#374151" }}>
+            <div style={{ fontSize: 12, color: "#374151" }}>
               Mirror → Analyze → Update → Summarize · {merchants.length} merchants · {events.length} events · {alerts.length} pre-failure alerts
             </div>
           </div>
@@ -825,7 +825,7 @@ export default function TwinDashboard() {
             { label: "Calls Prevented", value: twinStats.callsPrevented.toLocaleString(), color: "#4ade80" },
           ].map(k => (
             <div key={k.label} style={{ textAlign: "center", background: "#161b22", borderRadius: 6, padding: "4px 10px" }}>
-              <div style={{ fontSize: 12, fontWeight: 800, color: k.color }}>{k.value}</div>
+              <div style={{ fontSize: 14, fontWeight: 800, color: k.color }}>{k.value}</div>
               <div style={{ fontSize: 7, color: "#374151" }}>{k.label}</div>
             </div>
           ))}
@@ -833,7 +833,7 @@ export default function TwinDashboard() {
           <button onClick={() => setAutoRunning(p => !p)} style={{
             background: autoRunning ? "#ef4444" : "#00a651",
             color: "white", border: "none", borderRadius: 7,
-            padding: "7px 16px", fontSize: 12, fontWeight: 700, cursor: "pointer",
+            padding: "7px 16px", fontSize: 14, fontWeight: 700, cursor: "pointer",
             boxShadow: autoRunning ? "0 0 12px rgba(239,68,68,0.4)" : "0 0 12px rgba(0,166,81,0.4)",
           }}>
             {autoRunning ? "⏹ Pause" : "▶ Auto Run"}
@@ -856,7 +856,7 @@ export default function TwinDashboard() {
         {[
           { step: "Step 1", file: "merchantDataModel.js", done: true },
           { step: "Step 2", file: "failureRulesEngine.js", done: true },
-          { step: "Step 3", file: "merchant-simulator.jsx", done: true },
+          { step: "Step 3", file: "merchantSimulator.jsx", done: true },
           { step: "Step 4", file: "twinDashboard.jsx", current: true },
         ].map((s, i) => (
           <div key={s.step} style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -866,7 +866,7 @@ export default function TwinDashboard() {
               border: s.current ? "1px solid rgba(0,166,81,0.3)" : "1px solid transparent",
               borderRadius: 5, padding: "2px 8px",
             }}>
-              <span style={{ fontSize: 8, color: s.current ? "#00a651" : "#374151", fontWeight: 700 }}>{s.step} {s.done && !s.current ? "✓" : s.current ? "← CURRENT" : ""}</span>
+              <span style={{ fontSize: 10, color: s.current ? "#00a651" : "#374151", fontWeight: 700 }}>{s.step} {s.done && !s.current ? "✓" : s.current ? "← CURRENT" : ""}</span>
               <span style={{ fontSize: 7, color: "#1e2730", marginLeft: 5 }}>{s.file}</span>
             </div>
           </div>
@@ -886,14 +886,14 @@ export default function TwinDashboard() {
 
           {/* Quick sensor read of selected merchant */}
           <div style={{ background: "#0d1117", border: "1px solid #21262d", borderRadius: 10, padding: 12, flex: 1 }}>
-            <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>
+            <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>
               📡 SELECTED MERCHANT SENSORS
             </div>
             <div style={{ display: "flex", gap: 6, alignItems: "center", marginBottom: 8 }}>
               <span style={{ fontSize: 18 }}>{selectedMerchant.avatar}</span>
               <div>
-                <div style={{ fontSize: 10, fontWeight: 700 }}>{selectedMerchant.business_name}</div>
-                <div style={{ fontSize: 8, color: "#4b5563" }}>PB {selectedMerchant.paybill}</div>
+                <div style={{ fontSize: 14, fontWeight: 700 }}>{selectedMerchant.business_name}</div>
+                <div style={{ fontSize: 10, color: "white" }}>PB {selectedMerchant.paybill}</div>
               </div>
               <div style={{ marginLeft: "auto" }}>
                 <span style={{ fontSize: 9, fontWeight: 700, color: RISK_TIER_STYLE[getRiskTier(selectedMerchant)].color }}>
@@ -913,8 +913,8 @@ export default function TwinDashboard() {
                 ["Dormant", `${selectedMerchant.dormant_days}d`, selectedMerchant.dormant_days < 30],
               ].map(([k, v, ok]) => (
                 <div key={k} style={{ display: "flex", justifyContent: "space-between", background: "#080b10", borderRadius: 4, padding: "3px 6px" }}>
-                  <span style={{ fontSize: 8, color: "#374151" }}>{k}</span>
-                  <span style={{ fontSize: 8, fontWeight: 700, color: ok ? "#4ade80" : "#f87171", textTransform: "uppercase" }}>{v}</span>
+                  <span style={{ fontSize: 10, color: "white" }}>{k}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: ok ? "#4ade80" : "#f87171", textTransform: "uppercase" }}>{v}</span>
                 </div>
               ))}
             </div>

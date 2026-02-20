@@ -67,11 +67,11 @@ function FailurePanel({ result, onBack }) {
           <span style={{ fontSize: 14 }}>
             {result.success === true ? "✅" : result.success === "warn" ? "⚠️" : "❌"}
           </span>
-          <span style={{ fontWeight: 800, fontSize: 12, color: result.success === true ? "#4ade80" : s?.badge }}>
+          <span style={{ fontWeight: 800, fontSize: 14, color: result.success === true ? "#4ade80" : s?.badge }}>
             {result.success === true ? "SUCCESS" : result.success === "warn" ? "WARNING" : "FAILED"}
           </span>
           {result.code && result.code !== "OK" && (
-            <span style={{ fontFamily: "monospace", fontSize: 9, color: "#4b5563" }}>[{result.code}]</span>
+            <span style={{ fontFamily: "monospace", fontSize: 9, color: "white" }}>[{result.code}]</span>
           )}
           {s && (
             <span style={{ fontSize: 9, background: s.badge + "22", color: s.badge, padding: "1px 6px", borderRadius: 3, fontWeight: 700 }}>
@@ -80,12 +80,12 @@ function FailurePanel({ result, onBack }) {
           )}
         </div>
         {onBack && (
-          <button onClick={onBack} style={{ background: "none", border: "none", color: "#4b5563", cursor: "pointer", fontSize: 14, padding: 0 }}>✕</button>
+          <button onClick={onBack} style={{ background: "none", border: "none", color: "white", cursor: "pointer", fontSize: 14, padding: 0 }}>✕</button>
         )}
       </div>
 
       {/* Inline message */}
-      <p style={{ fontSize: 12, color: "#e2e8f0", margin: "0 0 8px", lineHeight: 1.55 }}>
+      <p style={{ fontSize: 14, color: "#e2e8f0", margin: "0 0 8px", lineHeight: 1.55 }}>
         {result.inline}
       </p>
 
@@ -93,15 +93,15 @@ function FailurePanel({ result, onBack }) {
       {!result.success && (
         <>
           <div style={{ background: "rgba(0,0,0,0.35)", borderRadius: 6, padding: "8px 10px", marginBottom: 7 }}>
-            <div style={{ fontSize: 8, color: "#6b7280", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>WHY THIS HAPPENED</div>
+            <div style={{ fontSize: 10, color: "#6b7280", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>WHY THIS HAPPENED</div>
             <p style={{ fontSize: 11, color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>{result.reason}</p>
           </div>
           <div style={{ background: "rgba(234,179,8,0.06)", border: "1px solid rgba(234,179,8,0.18)", borderRadius: 6, padding: "8px 10px", marginBottom: 7 }}>
-            <div style={{ fontSize: 8, color: "#eab308", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>💡 HOW TO FIX</div>
+            <div style={{ fontSize: 10, color: "#eab308", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>💡 HOW TO FIX</div>
             <p style={{ fontSize: 11, color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>{result.fix}</p>
           </div>
           <div style={{ background: "rgba(99,179,237,0.06)", border: "1px solid rgba(99,179,237,0.15)", borderRadius: 6, padding: "8px 10px" }}>
-            <div style={{ fontSize: 8, color: "#7dd3fc", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>ESCALATION</div>
+            <div style={{ fontSize: 10, color: "#7dd3fc", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>ESCALATION</div>
             <p style={{ fontSize: 11, color: "#bae6fd", margin: 0 }}>{result.escalation}</p>
           </div>
         </>
@@ -111,11 +111,11 @@ function FailurePanel({ result, onBack }) {
       {result.success === "warn" && (
         <>
           <div style={{ background: "rgba(0,0,0,0.25)", borderRadius: 6, padding: "8px 10px", marginBottom: 7 }}>
-            <div style={{ fontSize: 8, color: "#6b7280", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>WHY THIS HAPPENED</div>
+            <div style={{ fontSize: 10, color: "#6b7280", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>WHY THIS HAPPENED</div>
             <p style={{ fontSize: 11, color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>{result.reason}</p>
           </div>
           <div style={{ background: "rgba(234,179,8,0.06)", border: "1px solid rgba(234,179,8,0.18)", borderRadius: 6, padding: "8px 10px" }}>
-            <div style={{ fontSize: 8, color: "#eab308", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>💡 HOW TO FIX</div>
+            <div style={{ fontSize: 10, color: "#eab308", fontWeight: 700, letterSpacing: 1, marginBottom: 4 }}>💡 HOW TO FIX</div>
             <p style={{ fontSize: 11, color: "#cbd5e1", margin: 0, lineHeight: 1.5 }}>{result.fix}</p>
           </div>
         </>
@@ -163,11 +163,11 @@ function AppChannel({ merchant }) {
           {screen !== "home" && (
             <button onClick={goBack} style={{ background: "none", border: "none", color: "white", cursor: "pointer", fontSize: 17, padding: "0 5px 0 0", lineHeight: 1 }}>‹</button>
           )}
-          <span style={{ color: "white", fontSize: 10, fontWeight: 800, letterSpacing: 0.5 }}>M-PESA Business</span>
+          <span style={{ color: "white", fontSize: 14, fontWeight: 800, letterSpacing: 0.5 }}>M-PESA Business</span>
         </div>
         <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
           <div style={{ width: 7, height: 7, borderRadius: "50%", background: merchant.account_status === "active" ? "#a7f3d0" : "#fca5a5" }} />
-          <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 8 }}>{merchant.phone_number}</span>
+          <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 10 }}>{merchant.phone_number}</span>
         </div>
       </div>
 
@@ -182,26 +182,26 @@ function AppChannel({ merchant }) {
               <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 10 }}>
                 <div style={{ fontSize: 22 }}>{merchant.avatar}</div>
                 <div>
-                  <div style={{ color: "white", fontWeight: 700, fontSize: 12 }}>{merchant.business_name}</div>
+                  <div style={{ color: "white", fontWeight: 700, fontSize: 14 }}>{merchant.business_name}</div>
                   <div style={{ color: "rgba(255,255,255,0.6)", fontSize: 9 }}>PB {merchant.paybill} · {merchant.county}</div>
                 </div>
               </div>
               <div style={{ color: "rgba(255,255,255,0.65)", fontSize: 9 }}>Available Balance</div>
               <div style={{ color: "white", fontSize: 22, fontWeight: 800, letterSpacing: -0.5, marginBottom: 8 }}>{formatKES(merchant.balance)}</div>
               <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
-                <span style={{ fontSize: 8, padding: "2px 8px", borderRadius: 10, fontWeight: 700, background: merchant.account_status === "active" ? "rgba(255,255,255,0.2)" : "rgba(239,68,68,0.5)", color: "white" }}>
+                <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, fontWeight: 700, background: merchant.account_status === "active" ? "rgba(255,255,255,0.2)" : "rgba(239,68,68,0.5)", color: "white" }}>
                   {merchant.account_status.toUpperCase()}
                 </span>
-                <span style={{ fontSize: 8, padding: "2px 8px", borderRadius: 10, fontWeight: 700, background: merchant.kyc_status === "verified" ? "rgba(255,255,255,0.15)" : "rgba(234,179,8,0.5)", color: "white" }}>
+                <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, fontWeight: 700, background: merchant.kyc_status === "verified" ? "rgba(255,255,255,0.15)" : "rgba(234,179,8,0.5)", color: "white" }}>
                   KYC {merchant.kyc_status.toUpperCase()}
                 </span>
-                <span style={{ fontSize: 8, padding: "2px 8px", borderRadius: 10, fontWeight: 700, background: tierStyle.bd + "44", color: tierStyle.color }}>
+                <span style={{ fontSize: 10, padding: "2px 8px", borderRadius: 10, fontWeight: 700, background: tierStyle.bd + "44", color: tierStyle.color }}>
                   {tier}
                 </span>
               </div>
             </div>
 
-            <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>SERVICES</div>
+            <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>SERVICES</div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 7 }}>
               {MENU_STRUCTURE.map(m => (
                 <button key={m.id} onClick={() => { setActiveMenu(m); setScreen("menu"); setResult(null); }}
@@ -210,7 +210,7 @@ function AppChannel({ merchant }) {
                   onMouseLeave={e => e.currentTarget.style.borderColor = "#21262d"}>
                   <div style={{ fontSize: 20, marginBottom: 5 }}>{m.icon}</div>
                   <div style={{ color: "#e2e8f0", fontSize: 11, fontWeight: 600 }}>{m.label}</div>
-                  <div style={{ color: "#4b5563", fontSize: 8, marginTop: 2 }}>{m.items.length} services</div>
+                  <div style={{ color: "white", fontSize: 10, marginTop: 2 }}>{m.items.length} services</div>
                 </button>
               ))}
             </div>
@@ -229,14 +229,14 @@ function AppChannel({ merchant }) {
                   onMouseEnter={e => e.currentTarget.style.borderColor = "#00a651"}
                   onMouseLeave={e => e.currentTarget.style.borderColor = !preCheck.success ? SEV[preCheck.severity]?.bd + "55" : "#21262d"}>
                   <div>
-                    <span style={{ color: "#e2e8f0", fontSize: 12 }}>{item.label}</span>
+                    <span style={{ color: "#e2e8f0", fontSize: 14 }}>{item.label}</span>
                     {!preCheck.success && (
-                      <div style={{ fontSize: 8, color: SEV[preCheck.severity]?.badge, marginTop: 2 }}>
+                      <div style={{ fontSize: 10, color: SEV[preCheck.severity]?.badge, marginTop: 2 }}>
                         {SEV[preCheck.severity]?.icon} Predicted failure · {preCheck.code}
                       </div>
                     )}
                   </div>
-                  <span style={{ color: "#4b5563", fontSize: 16 }}>›</span>
+                  <span style={{ color: "white", fontSize: 16 }}>›</span>
                 </button>
               );
             })}
@@ -249,11 +249,11 @@ function AppChannel({ merchant }) {
             <div style={{ fontSize: 40, marginBottom: 14 }}>⚡</div>
             <div style={{ color: "#94a3b8", fontSize: 11, marginBottom: 4 }}>Confirm action for</div>
             <div style={{ color: "#e2e8f0", fontWeight: 700, fontSize: 14, marginBottom: 3 }}>{activeItem.label}</div>
-            <div style={{ color: "#4b5563", fontSize: 10, marginBottom: 22 }}>{merchant.business_name}</div>
+            <div style={{ color: "white", fontSize: 14, marginBottom: 22 }}>{merchant.business_name}</div>
             <button onClick={confirm} style={{ width: "100%", background: "#00a651", color: "white", border: "none", borderRadius: 9, padding: "13px", fontSize: 13, fontWeight: 700, cursor: "pointer", marginBottom: 8 }}>
               Confirm
             </button>
-            <button onClick={() => setScreen("menu")} style={{ width: "100%", background: "#1e2730", color: "#94a3b8", border: "none", borderRadius: 9, padding: "11px", fontSize: 12, cursor: "pointer" }}>
+            <button onClick={() => setScreen("menu")} style={{ width: "100%", background: "#1e2730", color: "#94a3b8", border: "none", borderRadius: 9, padding: "11px", fontSize: 14, cursor: "pointer" }}>
               Cancel
             </button>
           </div>
@@ -351,8 +351,8 @@ function USSDChannel({ merchant }) {
   return (
     <div style={{ background: "#0d1117", borderRadius: 20, overflow: "hidden", border: "1px solid #21262d", display: "flex", flexDirection: "column", boxShadow: "0 12px 40px rgba(0,0,0,0.6)" }}>
       <div style={{ background: "#080b10", padding: "8px 14px", borderBottom: "1px solid #1e2730", display: "flex", justifyContent: "space-between" }}>
-        <span style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1 }}>USSD SIMULATOR</span>
-        <span style={{ fontSize: 10, color: "#00a651", fontWeight: 700 }}>*234#</span>
+        <span style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1 }}>USSD SIMULATOR</span>
+        <span style={{ fontSize: 14, color: "#00a651", fontWeight: 700 }}>*234#</span>
       </div>
 
       {/* Phone screen */}
@@ -362,7 +362,7 @@ function USSDChannel({ merchant }) {
             Type <span style={{ color: "#00a651", fontWeight: 700 }}>*234#</span><br />then press SEND
           </div>
         ) : (
-          <pre style={{ color: "#86efac", fontSize: 10, margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.65 }}>
+          <pre style={{ color: "#86efac", fontSize: 14, margin: 0, whiteSpace: "pre-wrap", lineHeight: 1.65 }}>
             {msgs[msgs.length - 1]}
           </pre>
         )}
@@ -372,9 +372,9 @@ function USSDChannel({ merchant }) {
       <div style={{ padding: "0 12px 8px", display: "flex", gap: 6 }}>
         <input value={input} onChange={e => setInput(e.target.value)} onKeyDown={e => e.key === "Enter" && send()}
           placeholder={phase === "idle" ? "Dial *234#" : "Enter option..."}
-          style={{ flex: 1, background: "#161b22", border: "1px solid #21262d", borderRadius: 6, padding: "8px 10px", color: "#e2e8f0", fontSize: 12, fontFamily: "monospace", outline: "none" }}
+          style={{ flex: 1, background: "#161b22", border: "1px solid #21262d", borderRadius: 6, padding: "8px 10px", color: "#e2e8f0", fontSize: 14, fontFamily: "monospace", outline: "none" }}
         />
-        <button onClick={send} style={{ background: "#00a651", color: "white", border: "none", borderRadius: 6, padding: "8px 14px", fontWeight: 700, fontSize: 12, cursor: "pointer" }}>SEND</button>
+        <button onClick={send} style={{ background: "#00a651", color: "white", border: "none", borderRadius: 6, padding: "8px 14px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}>SEND</button>
       </div>
 
       {/* Keypad */}
@@ -427,7 +427,7 @@ function WebChannel({ merchant }) {
         <div style={{ display: "flex", gap: 5, marginBottom: 6 }}>
           {["#ef4444","#f97316","#4ade80"].map(c => <div key={c} style={{ width: 9, height: 9, borderRadius: "50%", background: c }} />)}
         </div>
-        <div style={{ background: "#161b22", borderRadius: 4, padding: "4px 10px", fontSize: 9, color: "#4b5563", fontFamily: "monospace" }}>
+        <div style={{ background: "#161b22", borderRadius: 4, padding: "4px 10px", fontSize: 9, color: "white", fontFamily: "monospace" }}>
           🔒 business.safaricom.co.ke/portal/{merchant.paybill}
         </div>
       </div>
@@ -437,13 +437,13 @@ function WebChannel({ merchant }) {
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <span style={{ fontSize: 20 }}>{merchant.avatar}</span>
           <div>
-            <div style={{ color: "white", fontWeight: 700, fontSize: 12 }}>{merchant.business_name}</div>
+            <div style={{ color: "white", fontWeight: 700, fontSize: 14 }}>{merchant.business_name}</div>
             <div style={{ color: "rgba(255,255,255,0.45)", fontSize: 9 }}>PB {merchant.paybill} · {merchant.county} · {merchant.bank}</div>
           </div>
         </div>
         <div style={{ textAlign: "right" }}>
           <div style={{ color: "white", fontWeight: 800, fontSize: 14 }}>{formatKES(merchant.balance)}</div>
-          <span style={{ fontSize: 8, color: tierStyle.color, fontWeight: 700 }}>{tierStyle.label}</span>
+          <span style={{ fontSize: 10, color: tierStyle.color, fontWeight: 700 }}>{tierStyle.label}</span>
         </div>
       </div>
 
@@ -451,7 +451,7 @@ function WebChannel({ merchant }) {
       <div style={{ display: "flex", background: "#080b10", borderBottom: "1px solid #1e2730", overflowX: "auto" }}>
         {MENU_STRUCTURE.map(m => (
           <button key={m.id} onClick={() => { setTab(tab?.id === m.id ? null : m); setResult(null); setActiveItem(null); }}
-            style={{ background: "none", border: "none", borderBottom: tab?.id === m.id ? "2px solid #00a651" : "2px solid transparent", color: tab?.id === m.id ? "#00a651" : "#6b7280", padding: "8px 12px", fontSize: 10, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}>
+            style={{ background: "none", border: "none", borderBottom: tab?.id === m.id ? "2px solid #00a651" : "2px solid transparent", color: tab?.id === m.id ? "#00a651" : "#6b7280", padding: "8px 12px", fontSize: 14, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}>
             {m.icon} {m.label}
           </button>
         ))}
@@ -462,7 +462,7 @@ function WebChannel({ merchant }) {
         {!tab ? (
           <>
             {/* Sensor health grid */}
-            <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>SENSOR HEALTH</div>
+            <div style={{ fontSize: 12, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 8 }}>SENSOR HEALTH</div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 5, marginBottom: 10 }}>
               {[
                 { k: "Account", v: merchant.account_status, ok: "active" },
@@ -481,8 +481,8 @@ function WebChannel({ merchant }) {
                 const col = isGood ? "#4ade80" : isWarn ? "#fbbf24" : "#f87171";
                 return (
                   <div key={c.k} style={{ background: "#161b22", borderRadius: 6, padding: "7px 9px" }}>
-                    <div style={{ fontSize: 7, color: "#4b5563", marginBottom: 2 }}>{c.k}</div>
-                    <div style={{ fontSize: 10, fontWeight: 700, color: col, textTransform: "uppercase" }}>{val}</div>
+                    <div style={{ fontSize: 12, color: "white", marginBottom: 2 }}>{c.k}</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: col, textTransform: "uppercase" }}>{val}</div>
                   </div>
                 );
               })}
@@ -490,7 +490,7 @@ function WebChannel({ merchant }) {
 
             {/* Health bar */}
             <div style={{ background: "#161b22", borderRadius: 7, padding: "8px 10px" }}>
-              <div style={{ fontSize: 9, color: "#4b5563", marginBottom: 5 }}>
+              <div style={{ fontSize: 12, color: "white", marginBottom: 5 }}>
                 Overall health: {green.length}/{green.length + amber.length + red.length} sensors OK
               </div>
               <div style={{ display: "flex", gap: 2, height: 5, borderRadius: 3, overflow: "hidden" }}>
@@ -518,7 +518,7 @@ function WebChannel({ merchant }) {
                     onMouseLeave={e => { if (!isActive) e.currentTarget.style.borderColor = borderCol; }}>
                     <div style={{ color: "#e2e8f0", fontSize: 11, fontWeight: 600, marginBottom: 3 }}>{item.label}</div>
                     {!preCheck.success && (
-                      <div style={{ fontSize: 8, color: SEV[preCheck.severity]?.badge }}>
+                      <div style={{ fontSize: 10, color: SEV[preCheck.severity]?.badge }}>
                         {SEV[preCheck.severity]?.icon} {preCheck.code}
                       </div>
                     )}
@@ -528,7 +528,7 @@ function WebChannel({ merchant }) {
             </div>
 
             {loading && (
-              <div style={{ textAlign: "center", padding: "20px 0", color: "#4b5563" }}>
+              <div style={{ textAlign: "center", padding: "20px 0", color: "white" }}>
                 <div style={{ fontSize: 22, marginBottom: 6 }}>⏳</div>
                 <div style={{ fontSize: 11 }}>Processing request...</div>
               </div>
@@ -551,7 +551,7 @@ function WebChannel({ merchant }) {
 function Sidebar({ merchants, selected, onSelect, onAddGenerated, onReset }) {
   return (
     <div style={{ width: 215, background: "#080b10", borderRight: "1px solid #1e2730", padding: 12, overflowY: "auto", flexShrink: 0, display: "flex", flexDirection: "column", gap: 4 }}>
-      <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>SELECT MERCHANT</div>
+      <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>SELECT MERCHANT</div>
 
       {merchants.map(m => {
         const summary = getMerchantSummary(m);
@@ -569,8 +569,8 @@ function Sidebar({ merchants, selected, onSelect, onAddGenerated, onReset }) {
               <div style={{ display: "flex", gap: 7, alignItems: "center" }}>
                 <span style={{ fontSize: 16 }}>{m.avatar}</span>
                 <div>
-                  <div style={{ color: "#e2e8f0", fontSize: 10, fontWeight: 600, lineHeight: 1.3 }}>{m.business_name}</div>
-                  <div style={{ color: "#4b5563", fontSize: 8 }}>{m.phone_number}</div>
+                  <div style={{ color: "#e2e8f0", fontSize: 14, fontWeight: 600, lineHeight: 1.3 }}>{m.business_name}</div>
+                  <div style={{ color: "white", fontSize: 10 }}>{m.phone_number}</div>
                 </div>
               </div>
               <div style={{ textAlign: "right", flexShrink: 0 }}>
@@ -594,24 +594,24 @@ function Sidebar({ merchants, selected, onSelect, onAddGenerated, onReset }) {
 
       {/* Generator controls */}
       <div style={{ marginTop: 8, borderTop: "1px solid #1e2730", paddingTop: 10 }}>
-        <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>STRESS TESTING</div>
-        <button onClick={() => onAddGenerated(1)} style={{ width: "100%", background: "#161b22", border: "1px solid #21262d", color: "#e2e8f0", borderRadius: 6, padding: "7px", fontSize: 10, cursor: "pointer", marginBottom: 4 }}>
+        <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>STRESS TESTING</div>
+        <button onClick={() => onAddGenerated(1)} style={{ width: "100%", background: "#161b22", border: "1px solid #21262d", color: "#e2e8f0", borderRadius: 6, padding: "7px", fontSize: 14, cursor: "pointer", marginBottom: 4 }}>
           + Generate 1 Merchant
         </button>
-        <button onClick={() => onAddGenerated(5)} style={{ width: "100%", background: "#161b22", border: "1px solid #21262d", color: "#e2e8f0", borderRadius: 6, padding: "7px", fontSize: 10, cursor: "pointer", marginBottom: 4 }}>
+        <button onClick={() => onAddGenerated(5)} style={{ width: "100%", background: "#161b22", border: "1px solid #21262d", color: "#e2e8f0", borderRadius: 6, padding: "7px", fontSize: 14, cursor: "pointer", marginBottom: 4 }}>
           + Generate 5 Merchants
         </button>
-        <button onClick={onReset} style={{ width: "100%", background: "#1e2730", border: "1px solid #21262d", color: "#94a3b8", borderRadius: 6, padding: "7px", fontSize: 10, cursor: "pointer" }}>
+        <button onClick={onReset} style={{ width: "100%", background: "#1e2730", border: "1px solid #21262d", color: "#94a3b8", borderRadius: 6, padding: "7px", fontSize: 14, cursor: "pointer" }}>
           Reset to Registry
         </button>
-        <div style={{ fontSize: 8, color: "#374151", marginTop: 6, lineHeight: 1.4 }}>
+        <div style={{ fontSize: 10, color: "#374151", marginTop: 6, lineHeight: 1.4 }}>
           Generated merchants use weighted random sensors reflecting real call center failure distribution.
         </div>
       </div>
 
       {/* Selected merchant detail */}
       <div style={{ marginTop: 8, borderTop: "1px solid #1e2730", paddingTop: 10 }}>
-        <div style={{ fontSize: 9, color: "#4b5563", fontWeight: 700, letterSpacing: 1, marginBottom: 7 }}>LIVE SENSORS</div>
+        <div style={{ fontSize: 9, color: "white", fontWeight: 700, letterSpacing: 1, marginBottom: 7 }}>LIVE SENSORS</div>
         {[
           ["KYC", selected.kyc_status, selected.kyc_status === "verified" ? "#4ade80" : selected.kyc_status === "expired" ? "#f87171" : "#fbbf24"],
           ["SIM", selected.sim_status, selected.sim_status === "active" ? "#4ade80" : "#fbbf24"],
@@ -624,7 +624,7 @@ function Sidebar({ merchants, selected, onSelect, onAddGenerated, onReset }) {
           ["KYC Age", `${selected.kyc_age_days}d`, selected.kyc_age_days >= 365 ? "#f87171" : "#4ade80"],
         ].map(([k, v, c]) => (
           <div key={k} style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-            <span style={{ fontSize: 9, color: "#4b5563" }}>{k}</span>
+            <span style={{ fontSize: 9, color: "white" }}>{k}</span>
             <span style={{ fontSize: 9, fontWeight: 700, color: c, textTransform: "uppercase" }}>{v}</span>
           </div>
         ))}
@@ -671,7 +671,7 @@ export default function MerchantSimulator() {
           </div>
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <div style={{ fontSize: 10, color: "#4b5563", background: "#161b22", borderRadius: 6, padding: "4px 10px" }}>
+          <div style={{ fontSize: 14, color: "white", background: "#161b22", borderRadius: 6, padding: "4px 10px" }}>
             Active: <span style={{ color: "#e2e8f0", fontWeight: 600 }}>{selected.business_name}</span>
           </div>
         </div>
@@ -682,7 +682,7 @@ export default function MerchantSimulator() {
         {[
           { step: "Step 1", file: "merchantDataModel.js", desc: "Schema · Registry · Generator · Mutations", done: true },
           { step: "Step 2", file: "failureRulesEngine.js", desc: "12 Rules · Evaluator · Pre-scanner · Batch scanner", done: true },
-          { step: "Step 3", file: "merchant-simulator.jsx", desc: "App · USSD · Web Portal", current: true },
+          { step: "Step 3", file: "merchantSimulator.jsx", desc: "App · USSD · Web Portal", current: true },
           { step: "Step 4", file: "twinDashboard.jsx", desc: "Twin Loop · Mirror · Analyze · Update · Alert", done: false },
         ].map((s, i) => (
           <div key={s.step} style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -692,7 +692,7 @@ export default function MerchantSimulator() {
               border: s.current ? "1px solid rgba(0,166,81,0.3)" : "1px solid transparent",
               borderRadius: 5, padding: "2px 7px"
             }}>
-              <div style={{ fontSize: 8, color: s.current ? "#00a651" : s.done ? "#4b5563" : "#1e2730", fontWeight: 700 }}>{s.step} {s.done ? "✓" : ""}</div>
+              <div style={{ fontSize: 10, color: s.current ? "#00a651" : s.done ? "white" : "#1e2730", fontWeight: 700 }}>{s.step} {s.done ? "✓" : ""}</div>
               <div style={{ fontSize: 7, color: s.current ? "#6b7280" : s.done ? "#374151" : "#1e2730" }}>{s.file}</div>
             </div>
           </div>
@@ -719,7 +719,7 @@ export default function MerchantSimulator() {
               { label: "🌐 Merchant Web Portal", sub: "business.safaricom.co.ke · click any action to execute" },
             ].map(({ label, sub }) => (
               <div key={label} style={{ paddingLeft: 4 }}>
-                <div style={{ fontWeight: 700, fontSize: 12, color: "#e2e8f0" }}>{label}</div>
+                <div style={{ fontWeight: 700, fontSize: 14, color: "#e2e8f0" }}>{label}</div>
                 <div style={{ fontSize: 9, color: "#374151" }}>{sub}</div>
               </div>
             ))}
