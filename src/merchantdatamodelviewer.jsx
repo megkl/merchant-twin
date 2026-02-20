@@ -102,7 +102,7 @@ export default function MerchantDataModelViewer() {
             padding: "8px 14px", cursor: "pointer", fontSize: 11, fontWeight: 600,
           }}>
             {t.label}
-            <span style={{ fontSize: 8, color: "#374151", marginLeft: 5 }}>{t.desc}</span>
+            <span style={{ fontSize: 10, color: "#374151", marginLeft: 5 }}>{t.desc}</span>
           </button>
         ))}
       </div>
@@ -128,8 +128,8 @@ export default function MerchantDataModelViewer() {
                       <span style={{ fontSize: 18 }}>{m.avatar}</span>
                       <div>
                         <div style={{ color: "#e2e8f0", fontSize: 10, fontWeight: 600 }}>{m.business_name}</div>
-                        <div style={{ fontSize: 8, color: "#4b5563" }}>PB {m.paybill}</div>
-                        <div style={{ fontSize: 8, color: ts.color, fontWeight: 700 }}>{tier}</div>
+                        <div style={{ fontSize: 10, color: "#4b5563" }}>PB {m.paybill}</div>
+                        <div style={{ fontSize: 10, color: ts.color, fontWeight: 700 }}>{tier}</div>
                       </div>
                     </div>
                   </button>
@@ -263,7 +263,7 @@ export default function MerchantDataModelViewer() {
                 }}>
                   <div>
                     <div style={{ fontSize: 9, fontFamily: "monospace", color: def.sensor ? "#4ade80" : "#94a3b8", fontWeight: 600 }}>{field}</div>
-                    <div style={{ fontSize: 8, color: "#4b5563", marginTop: 2, lineHeight: 1.4 }}>{def.description}</div>
+                    <div style={{ fontSize: 10, color: "#4b5563", marginTop: 2, lineHeight: 1.4 }}>{def.description}</div>
                     {def.values && (
                       <div style={{ fontSize: 7, color: "#374151", marginTop: 2 }}>
                         values: {def.values.join(" | ")}
@@ -295,7 +295,7 @@ export default function MerchantDataModelViewer() {
               <div style={{ background: "#0d1117", border: "1px solid #1e2730", borderRadius: 8, padding: 12, marginBottom: 10 }}>
                 <div style={{ fontSize: 13 }}>{selected.avatar}</div>
                 <div style={{ fontWeight: 700, fontSize: 11, marginTop: 4 }}>{selected.business_name}</div>
-                <div style={{ fontSize: 8, color: "#4b5563" }}>PB {selected.paybill}</div>
+                <div style={{ fontSize: 10, color: "#4b5563" }}>PB {selected.paybill}</div>
                 <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 3 }}>
                   {[
                     ["account_status", selected.account_status, "active"],
@@ -309,8 +309,8 @@ export default function MerchantDataModelViewer() {
                     const color = good === null ? "#94a3b8" : v === good ? "#4ade80" : "#f87171";
                     return (
                       <div key={k} style={{ display: "flex", justifyContent: "space-between" }}>
-                        <span style={{ fontSize: 8, color: "#374151", fontFamily: "monospace" }}>{k}</span>
-                        <span style={{ fontSize: 8, color, fontWeight: 700 }}>{v}</span>
+                        <span style={{ fontSize: 10, color: "#374151", fontFamily: "monospace" }}>{k}</span>
+                        <span style={{ fontSize: 10, color, fontWeight: 700 }}>{v}</span>
                       </div>
                     );
                   })}
@@ -346,10 +346,10 @@ export default function MerchantDataModelViewer() {
                 <div key={i} style={{ background: "#0d1117", border: "1px solid #1e2730", borderRadius: 6, padding: "8px 10px", marginBottom: 5 }}>
                   <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
                     <span style={{ fontSize: 10, color: "#00a651", fontWeight: 700 }}>{log.label}</span>
-                    <span style={{ fontSize: 8, color: "#374151", fontFamily: "monospace" }}>{log.ts}</span>
+                    <span style={{ fontSize: 10, color: "#374151", fontFamily: "monospace" }}>{log.ts}</span>
                   </div>
                   <div style={{ fontSize: 9, color: "#4b5563" }}>{log.merchantName}</div>
-                  <div style={{ fontSize: 8, color: "#374151", fontFamily: "monospace", marginTop: 2 }}>{log.mutation}(merchant)</div>
+                  <div style={{ fontSize: 10, color: "#374151", fontFamily: "monospace", marginTop: 2 }}>{log.mutation}(merchant)</div>
                 </div>
               ))}
             </div>
@@ -368,7 +368,7 @@ export default function MerchantDataModelViewer() {
                 Generate
               </button>
             </div>
-            <div style={{ fontSize: 8, color: "#374151", marginBottom: 14, lineHeight: 1.6 }}>
+            <div style={{ fontSize: 10, color: "#374151", marginBottom: 14, lineHeight: 1.6 }}>
               Weights reflect real call center failure distribution (Oct–Dec 2025):
               account_status: 65% active · 25% suspended · 10% frozen |
               kyc_status: 60% verified · 20% pending · 20% expired |
@@ -387,8 +387,8 @@ export default function MerchantDataModelViewer() {
                         <span style={{ fontSize: 20 }}>{m.avatar}</span>
                         <div>
                           <div style={{ fontWeight: 700, fontSize: 11 }}>{m.business_name}</div>
-                          <div style={{ fontSize: 8, color: "#4b5563" }}>{m.phone_number} · PB {m.paybill}</div>
-                          <div style={{ fontSize: 8, color: ts.color, fontWeight: 700 }}>{ts.label}</div>
+                          <div style={{ fontSize: 10, color: "#4b5563" }}>{m.phone_number} · PB {m.paybill}</div>
+                          <div style={{ fontSize: 10, color: ts.color, fontWeight: 700 }}>{ts.label}</div>
                         </div>
                       </div>
                       <div style={{ display: "flex", gap: 2, height: 4, borderRadius: 2, overflow: "hidden", marginBottom: 6 }}>
