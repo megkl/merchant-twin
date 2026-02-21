@@ -1,150 +1,115 @@
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
+// src/index.js — Merchant Digital Twin (Full Stack v3)
+// 7 tabs: Data Model · Rules Engine · Simulator · Twin Dashboard · AI Dashboard · Upload · Bot Lab
 
-// ── Four steps of the Merchant Digital Twin
-import MerchantDataModelViewer from './merchantDataModelViewer';   // Step 1 UI
-import FailureRulesViewer from './failureRulesViewer';             // Step 2 UI
-import MerchantSimulator from './merchantSimulator';           // Step 3
-import TwinDashboard from './twinDashboard';
-import TwinDashboardV2 from './twinDashboardV2';                           // Step 4
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+
+import MerchantDataModelViewer from "./merchantDataModelViewer";
+import FailureRulesViewer      from "./failureRulesViewer";
+import MerchantSimulator       from "./merchantSimulator";
+import TwinDashboard           from "./twinDashboard";
+
+const CSS = `
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&family=Nunito:wght@400;600;700;800;900&display=swap');
+  @keyframes pulse  { 0%,100%{opacity:0.5}50%{opacity:1} }
+  @keyframes fadeIn { from{opacity:0}to{opacity:1} }
+  * { box-sizing:border-box; }
+  body { margin:0; padding:0; }
+  ::-webkit-scrollbar { width:4px; height:4px; }
+  ::-webkit-scrollbar-track { background:#080b10; }
+  ::-webkit-scrollbar-thumb { background:#1e2730; border-radius:2px; }
+  ::-webkit-scrollbar-thumb:hover { background:#374151; }
+`;
 
 const STEPS = [
-  {
-    id: 1,
-    label: "Data Model",
-    icon: "🗄️",
-    file: "merchantDataModel.js",
-    desc: "Schema · Registry · Generator · Mutations · Utilities",
-    tag: "STEP 1",
-    component: MerchantDataModelViewer,
-  },
-  {
-    id: 2,
-    label: "Rules Engine",
-    icon: "⚙️",
-    file: "failureRulesEngine.js",
-    desc: "12 Rules · Evaluator · Pre-scanner · Batch scanner",
-    tag: "STEP 2",
-    component: FailureRulesViewer,
-  },
-  {
-    id: 3,
-    label: "Simulator",
-    icon: "📱",
-    file: "merchantSimulator.jsx",
-    desc: "M-PESA App · USSD *234# · Web Portal",
-    tag: "STEP 3",
-    component: MerchantSimulator,
-  },
-  {
-    id: 4,
-    label: "Twin Dashboard",
-    icon: "🔁",
-    file: "twinDashboard.jsx",
-    desc: "Mirror · Analyze · Update · Summarize · Fleet · Alerts",
-    tag: "STEP 4",
-    component: TwinDashboard,
-  },
-  {
-    id: 5,
-    label: "Twin Dashboard With AI",
-    icon: "🔁",
-    file: "twinDashboard.jsx",
-    desc: "Mirror · Analyze · Update · Summarize · Fleet · Alerts",
-    tag: "STEP 5",
-    component: TwinDashboardV2,
-  },
-];
+  { id:1, tag:"STEP 1", icon:"🗄️", label:"Data Model",    accent:"#3b82f6", desc:"Schema · Registry · Mutations",          component:MerchantDataModelViewer },
+  { id:2, tag:"STEP 2", icon:"⚙️", label:"Rules Engine",  accent:"#f97316", desc:"12 Rules · Evaluator · Batch Scanner",   component:FailureRulesViewer      },
+  { id:3, tag:"STEP 3", icon:"📱", label:"Simulator",      accent:"#00a651", desc:"App · USSD *234# · Web Portal",          component:MerchantSimulator       },
+  { id:4, tag:"STEP 4", icon:"🔁", label:"Twin Dashboard", accent:"#10b981", desc:"Mirror · Analyze · Update · Summarize",  component:TwinDashboard           },
+ ];
+
+function BackendStatus() {
+  const [status, setStatus] = useState("checking");
+  useEffect(() => {
+    const check = () => {
+      fetch("http://localhost:4000/api/v1/health")
+        .then(r => r.json())
+        .then(d => setStatus(d.status === "ok" ? "ok" : "error"))
+        .catch(() => setStatus("error"));
+    };
+    check();
+    const t = setInterval(check, 30000);
+    return () => clearInterval(t);
+  }, []);
+  const color = status === "ok" ? "#4ade80" : status === "error" ? "#ef4444" : "#fbbf24";
+  return (
+    <div style={{ display:"flex", alignItems:"center", gap:5, background:"#0a0e14", padding:"4px 10px", borderRadius:5, border:"1px solid #1e2730" }}>
+      <div style={{ width:6, height:6, borderRadius:"50%", background:color, animation: status!=="ok" ? "pulse 1s infinite" : "none" }} />
+      <span style={{ fontSize:8, color, fontFamily:"'JetBrains Mono',monospace" }}>
+        {status === "ok" ? "API :4000 ✓" : status === "error" ? "API offline" : "Connecting..."}
+      </span>
+    </div>
+  );
+}
 
 function App() {
-  const [activeStep, setActiveStep] = useState(4);
-  const ActiveComponent = STEPS.find(s => s.id === activeStep)?.component;
+  const [active, setActive] = useState(1); // Open on Bot Lab
+
+  const step = STEPS.find(s => s.id === active);
+  const ActiveComponent = step?.component;
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh", background: "#060a0f", fontFamily: "'IBM Plex Sans', 'Segoe UI', sans-serif" }}>
+    <div style={{ display:"flex", flexDirection:"column", height:"100vh", background:"#060a0f", fontFamily:"'Nunito',sans-serif", overflow:"hidden" }}>
+      <style>{CSS}</style>
 
-      {/* ── Tab bar */}
-      <div style={{
-        background: "#080b10",
-        borderBottom: "1px solid #1e2730",
-        display: "flex",
-        alignItems: "stretch",
-        padding: "0 16px",
-        gap: 4,
-      }}>
+      {/* NAV */}
+      <nav style={{ background:"#080b10", borderBottom:"1px solid #1e2730", display:"flex", alignItems:"stretch", padding:"0 12px", gap:1, flexShrink:0, overflowX:"auto" }}>
         {/* Brand */}
-        <div style={{ display: "flex", alignItems: "center", gap: 10, paddingRight: 20, borderRight: "1px solid #1e2730", marginRight: 8 }}>
-          <div style={{ background: "linear-gradient(135deg, #00a651, #005520)", borderRadius: 7, padding: "5px 8px", fontSize: 14 }}>📡</div>
+        <div style={{ display:"flex", alignItems:"center", gap:8, paddingRight:12, borderRight:"1px solid #1e2730", marginRight:4, flexShrink:0 }}>
+          <div style={{ background:"linear-gradient(135deg,#00a651,#005520)", borderRadius:7, padding:"4px 7px", fontSize:12 }}>📡</div>
           <div>
-            <div style={{ fontWeight: 800, fontSize: 14, color: "#e2e8f0", letterSpacing: -0.3 }}>Merchant Digital Twin</div>
-            <div style={{ fontSize: 10, color: "#374151" }}>Safaricom LNM · 4-Step Architecture</div>
+            <div style={{ fontWeight:900, fontSize:11, color:"#e2e8f0", fontFamily:"'Syne',sans-serif" }}>Merchant Digital Twin</div>
+            <div style={{ fontSize:6, color:"#374151" }}>Safaricom LNM · v3 · ML + Bots</div>
           </div>
         </div>
 
-        {/* Step tabs */}
-        {STEPS.map(step => {
-          const active = activeStep === step.id;
+        {STEPS.map(s => {
+          const isActive = active === s.id;
           return (
-            <button
-              key={step.id}
-              onClick={() => setActiveStep(step.id)}
-              style={{
-                background: active ? "rgba(0,166,81,0.1)" : "transparent",
-                border: "none",
-                borderBottom: active ? "2px solid #00a651" : "2px solid transparent",
-                borderTop: "2px solid transparent",
-                color: active ? "#e2e8f0" : "#4b5563",
-                padding: "10px 16px",
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-start",
-                gap: 2,
-                transition: "all 0.15s",
-                minWidth: 140,
-              }}
-              onMouseEnter={e => { if (!active) e.currentTarget.style.color = "#94a3b8"; }}
-              onMouseLeave={e => { if (!active) e.currentTarget.style.color = "#4b5563"; }}
-            >
-              <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-                <span style={{
-                  fontSize: 10, fontWeight: 700, letterSpacing: 0.5,
-                  color: active ? "#00a651" : "#374151",
-                  background: active ? "rgba(0,166,81,0.15)" : "#161b22",
-                  padding: "1px 5px", borderRadius: 3,
-                }}>{step.tag}</span>
-                <span style={{ fontSize: 11, fontWeight: 700 }}>{step.icon} {step.label}</span>
+            <button key={s.id} onClick={() => setActive(s.id)} style={{
+              background: isActive ? `${s.accent}10` : "transparent",
+              border:"none",
+              borderBottom: isActive ? `2px solid ${s.accent}` : "2px solid transparent",
+              borderTop:"2px solid transparent",
+              color: isActive ? "#e2e8f0" : "#4b5563",
+              padding:"6px 12px", cursor:"pointer",
+              display:"flex", flexDirection:"column", alignItems:"flex-start", gap:1,
+              transition:"all 0.15s", minWidth:95, flexShrink:0,
+            }}>
+              <div style={{ display:"flex", gap:4, alignItems:"center" }}>
+                <span style={{ fontSize:6, fontWeight:700, color: isActive ? s.accent : "#374151", background: isActive ? `${s.accent}20` : "#161b22", padding:"1px 4px", borderRadius:3 }}>
+                  {s.tag}
+                </span>
+                <span style={{ fontSize:9, fontWeight:700 }}>{s.icon} {s.label}</span>
+                {s.ai && <span style={{ fontSize:5, background:"linear-gradient(90deg,#6366f1,#8b5cf6)", color:"white", padding:"1px 3px", borderRadius:2, fontWeight:700 }}>AI</span>}
+                {s.ml && <span style={{ fontSize:5, background:"linear-gradient(90deg,#7c3aed,#a78bfa)", color:"white", padding:"1px 3px", borderRadius:2, fontWeight:700 }}>ML</span>}
               </div>
-              <div style={{ fontSize: 10, color: active ? "#6b7280" : "#374151", lineHeight: 1.3 }}>{step.desc}</div>
+              <div style={{ fontSize:6, color: isActive ? "#4b5563" : "#1e2730", whiteSpace:"nowrap", overflow:"hidden", maxWidth:130, textOverflow:"ellipsis" }}>{s.desc}</div>
             </button>
           );
         })}
 
-        {/* Architecture flow — right side */}
-        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 6, paddingLeft: 16 }}>
-          {STEPS.map((s, i) => (
-            <div key={s.id} style={{ display: "flex", alignItems: "center", gap: 4 }}>
-              {i > 0 && <span style={{ color: "#1e2730", fontSize: 14 }}>→</span>}
-              <button onClick={() => setActiveStep(s.id)} style={{
-                background: "none", border: "none", cursor: "pointer",
-                fontSize: 10, color: activeStep === s.id ? "#00a651" : "#374151",
-                fontWeight: activeStep === s.id ? 700 : 400,
-                padding: "2px 4px",
-              }}>
-                {s.file}
-              </button>
-            </div>
-          ))}
+        <div style={{ marginLeft:"auto", display:"flex", alignItems:"center", padding:"0 6px", flexShrink:0 }}>
+          <BackendStatus />
         </div>
-      </div>
+      </nav>
 
-      {/* ── Active step content */}
-      <div style={{ flex: 1, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+      {/* ACTIVE TAB */}
+      <div key={active} style={{ flex:1, overflow:"hidden", display:"flex", flexDirection:"column", animation:"fadeIn 0.15s" }}>
         {ActiveComponent && <ActiveComponent />}
       </div>
     </div>
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
